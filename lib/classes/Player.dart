@@ -186,7 +186,7 @@ class Player {
       child: RichText(
         text: TextSpan(
           style: TextStyle(
-            fontSize: 26.0,
+            fontSize: 24.0,
             fontFamily: 'Minecraftia',
           ),
           children: children,
