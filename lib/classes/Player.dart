@@ -153,7 +153,7 @@ class Player {
           ),
         ),
         TextSpan(
-          text: '+',
+          text: '+' * 'PLUS'.allMatches(newPackageRank).length,
           style: TextStyle(
             color: Color(isVIP ? 0xFFFFAA00 : mcColorCodes[colors[rankPlusColor]]),
           ),
