@@ -145,6 +145,7 @@ class Player {
     } else if (newPackageRank != null) {
       bool isVIP = newPackageRank.substring(0, 3) == 'VIP';
       int rankColor = isVIP ? 0xFF55FF55 : 0xFF55FFFF;
+      rankPlusColor ??= 'WHITE';
       children = [
         TextSpan(
           text: '[${newPackageRank.substring(0, 3)}',
