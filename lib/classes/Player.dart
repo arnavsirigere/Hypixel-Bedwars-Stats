@@ -188,6 +188,12 @@ class Player {
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Minecraftia',
+            shadows: [
+              Shadow(
+                offset: Offset(1.0, 1.0),
+                color: Color.fromARGB(127, 127, 127, 127),
+              ),
+            ],
           ),
           children: children,
         ),
