@@ -93,7 +93,26 @@ class Player {
         );
       }
     } else if (rank != null && rank != 'NORMAL') {
-      if (rank == 'YOUTUBER') {
+      // TODO: GAME_MASTER rank
+      if (rank == 'MODERATOR') {
+        children = [
+          TextSpan(
+            text: '[MOD] $ign',
+            style: TextStyle(
+              color: Color(0xFF00AA00),
+            ),
+          ),
+        ];
+      } else if (rank == 'HELPER') {
+        children = [
+          TextSpan(
+            text: '[HELPER] $ign',
+            style: TextStyle(
+              color: Color(0xFF5555FF),
+            ),
+          ),
+        ];
+      } else if (rank == 'YOUTUBER') {
         children = [
           TextSpan(
             text: '[',
