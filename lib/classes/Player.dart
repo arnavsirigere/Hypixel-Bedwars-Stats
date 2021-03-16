@@ -9,7 +9,6 @@ class Player {
   Player(this.ign);
 
   Future<String> getPlayerData() async {
-    //TODO: Fix capitalisation of ign
     // Minecraft Account UUID
     Response uuidResponse = await get(Uri.https('api.mojang.com', '/users/profiles/minecraft/$ign'));
     Map uuidData = jsonDecode(uuidResponse.body);
@@ -24,6 +23,13 @@ class Player {
     monthlyRankColor = playerData['monthyRankColor'];
     newPackageRank = playerData['newPackageRank'];
     rankPlusColor = playerData['rankPlusColor'];
+    // Using correct casing of ign
+    for (String knownAlias in playerData['knownAliases']) {
+      if (knownAlias.toLowerCase() == ign.toLowerCase()) {
+        ign = knownAlias;
+        break;
+      }
+    }
 
     return 'Fetch Complete!';
   }
