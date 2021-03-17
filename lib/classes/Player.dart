@@ -54,7 +54,7 @@ class Player {
       '§f': 0xFFFFFFFF,
     };
     Map colors = {
-      'BLACK': '§a',
+      'BLACK': '§0',
       'DARK_BLUE': '§1',
       'DARK_GREEN': '§2',
       'DARK_AQUA': '§3',
@@ -69,7 +69,7 @@ class Player {
       'RED': '§c',
       'LIGHT_PURPLE': '§d',
       'YELLOW': '§e',
-      'WHITE': '§7',
+      'WHITE': '§f',
     };
 
     List<InlineSpan> children = [];
