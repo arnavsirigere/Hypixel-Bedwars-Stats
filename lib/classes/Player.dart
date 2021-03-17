@@ -211,6 +211,7 @@ class Player {
     return FittedBox(
       child: RichText(
         text: TextSpan(
+          children: children,
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Minecraftia',
@@ -221,7 +222,6 @@ class Player {
               ),
             ],
           ),
-          children: children,
         ),
       ),
     );
