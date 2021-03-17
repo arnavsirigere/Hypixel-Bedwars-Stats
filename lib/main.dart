@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
                   Image(
                     height: 90.0,
                     width: 90.0,
-                    image: NetworkImage('https://crafatar.com/avatars/${player.uuid}'),
+                    image: NetworkImage('https://visage.surgeplay.com/face/${player.uuid}'),
                   ),
                 ],
               ),
