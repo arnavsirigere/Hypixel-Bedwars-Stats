@@ -5,6 +5,42 @@ import 'dart:convert';
 
 class Player {
   String ign, uuid, prefix, rank, monthlyPackageRank, monthlyRankColor, newPackageRank, rankPlusColor;
+  Map mcColorCodes = {
+    '§0': 0xFF000000,
+    '§1': 0xFF0000AA,
+    '§2': 0xFF00AA00,
+    '§3': 0xFF00AAAA,
+    '§4': 0xFFAA0000,
+    '§5': 0xFFAA00AA,
+    '§6': 0xFFFFAA00,
+    '§7': 0xFFAAAAAA,
+    '§8': 0xFF555555,
+    '§9': 0xFF5555FF,
+    '§a': 0xFF55FF55,
+    '§b': 0xFF55FFFF,
+    '§c': 0xFFFF5555,
+    '§d': 0xFFFF55FF,
+    '§e': 0xFFFFFF55,
+    '§f': 0xFFFFFFFF,
+  };
+  Map colors = {
+    'BLACK': '§0',
+    'DARK_BLUE': '§1',
+    'DARK_GREEN': '§2',
+    'DARK_AQUA': '§3',
+    'DARK_RED': '§4',
+    'DARK_PURPLE': '§5',
+    'GOLD': '§6',
+    'GREY': '§7',
+    'DARK_GREY': '§8',
+    'BLUE': '§9',
+    'GREEN': '§a',
+    'AQUA': '§b',
+    'RED': '§c',
+    'LIGHT_PURPLE': '§d',
+    'YELLOW': '§e',
+    'WHITE': '§f',
+  };
 
   Player(this.ign);
 
@@ -34,43 +70,6 @@ class Player {
   }
 
   Widget getIGNWidget() {
-    Map mcColorCodes = {
-      '§0': 0xFF000000,
-      '§1': 0xFF0000AA,
-      '§2': 0xFF00AA00,
-      '§3': 0xFF00AAAA,
-      '§4': 0xFFAA0000,
-      '§5': 0xFFAA00AA,
-      '§6': 0xFFFFAA00,
-      '§7': 0xFFAAAAAA,
-      '§8': 0xFF555555,
-      '§9': 0xFF5555FF,
-      '§a': 0xFF55FF55,
-      '§b': 0xFF55FFFF,
-      '§c': 0xFFFF5555,
-      '§d': 0xFFFF55FF,
-      '§e': 0xFFFFFF55,
-      '§f': 0xFFFFFFFF,
-    };
-    Map colors = {
-      'BLACK': '§0',
-      'DARK_BLUE': '§1',
-      'DARK_GREEN': '§2',
-      'DARK_AQUA': '§3',
-      'DARK_RED': '§4',
-      'DARK_PURPLE': '§5',
-      'GOLD': '§6',
-      'GREY': '§7',
-      'DARK_GREY': '§8',
-      'BLUE': '§9',
-      'GREEN': '§a',
-      'AQUA': '§b',
-      'RED': '§c',
-      'LIGHT_PURPLE': '§d',
-      'YELLOW': '§e',
-      'WHITE': '§f',
-    };
-
     List<InlineSpan> children = [];
 
     if (prefix != null && prefix != 'NORMAL') {
