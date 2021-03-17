@@ -30,7 +30,6 @@ class Player {
         break;
       }
     }
-
     return 'Fetch Complete!';
   }
 
