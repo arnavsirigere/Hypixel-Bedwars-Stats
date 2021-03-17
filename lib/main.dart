@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                       'Fetching Data . . .',
                       style: TextStyle(
                         fontSize: 32.0,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
           );
         }
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xFF2B2B2B),
           appBar: AppBar(
             backgroundColor: Colors.yellow[600],
             title: Center(
