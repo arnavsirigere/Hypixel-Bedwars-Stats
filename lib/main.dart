@@ -26,6 +26,16 @@ class _HomeState extends State<Home> {
               Center(
                 child: player.getIGNWidget(),
               ),
+              SizedBox(height: 15.0),
+              Row(
+                children: [
+                  Image(
+                    height: 90.0,
+                    width: 90.0,
+                    image: NetworkImage('https://crafatar.com/avatars/${player.uuid}'),
+                  ),
+                ],
+              ),
             ],
           );
         } else if (snapshot.hasError) {
