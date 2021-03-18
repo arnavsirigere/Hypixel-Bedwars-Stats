@@ -5,6 +5,7 @@ import 'dart:convert';
 
 class Player {
   String ign, uuid, prefix, rank, monthlyPackageRank, monthlyRankColor, newPackageRank, rankPlusColor;
+  int bwLevel;
   Map mcColorCodes = {
     '§0': 0xFF000000,
     '§1': 0xFF0000AA,
@@ -59,6 +60,7 @@ class Player {
     monthlyRankColor = playerData['monthyRankColor'];
     newPackageRank = playerData['newPackageRank'];
     rankPlusColor = playerData['rankPlusColor'];
+    bwLevel = playerData['achievements']['bedwars_level'];
     // Using correct casing of ign
     for (String knownAlias in playerData['knownAliases']) {
       if (knownAlias.toLowerCase() == ign.toLowerCase()) {
@@ -220,6 +222,110 @@ class Player {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget getBedwarsLevlWidget() {
+    List prestigeColors = [
+      'GREY',
+      'WHITE',
+      'GOLD',
+      'AQUA',
+      'DARK_GREEN',
+      'DARK_AQUA',
+      'DARK_RED',
+      'LIGHT_PURPLE',
+      'BLUE',
+      'DARK_PURPLE',
+      ['RED', 'GOLD', 'YELLOW', 'GREEN', 'AQUA', 'LIGHT_PURPLE', 'DARK_PURPLE'],
+      ['WHITE', 'GREY'],
+      ['YELLOW', 'GOLD'],
+      ['AQUA', 'DARK_AQUA'],
+      ['GREEN', 'DARK_GREEN'],
+      ['DARK_AQUA', 'BLUE'],
+      ['RED', 'DARK_RED'],
+      ['LIGHT_PURPLE', 'DARK_PURPLE'],
+      ['BLUE', 'DARK_BLUE'],
+      ['DARK_PURPLE', 'DARK_GREY'],
+      ['DARK_GREY', 'GREY', 'WHITE', 'WHITE', 'GREY', 'GREY', 'DARK_GREY'],
+      ['WHITE', 'WHITE', 'YELLOW', 'YELLOW', 'GOLD', 'GOLD', 'GOLD'],
+      ['GOLD', 'GOLD', 'WHITE', 'WHITE', 'AQUA', 'DARK_AQUA', 'DARK_AQUA'],
+      ['DARK_PURPLE', 'DARK_PURPLE', 'LIGHT_PURPLE', 'LIGHT_PURPLE', 'GOLD', 'YELLOW', 'YELLOW'],
+      ['AQUA', 'AQUA', 'WHITE', 'WHITE', 'GREY', 'GREY', 'DARK_GREY'],
+      ['WHITE', 'WHITE', 'GREEN', 'GREEN', 'DARK_GREEN', 'DARK_GREEN', 'DARK_GREEN'],
+      ['DARK_RED', 'DARK_RED', 'RED', 'RED', 'LIGHT_PURPLE', 'LIGHT_PURPLE', 'DARK_PURPLE'],
+      ['YELLOW', 'YELLOW', 'WHITE', 'WHITE', 'DARK_GREY', 'DARK_GREY', 'DARK_GREY'],
+      ['GREEN', 'GREEN', 'DARK_GREEN', 'DARK_GREEN', 'GOLD', 'GOLD', 'YELLOW'],
+      ['AQUA', 'AQUA', 'DARK_AQUA', 'DARK_AQUA', 'BLUE', 'BLUE', 'DARK_BLUE'],
+      ['YELLOW', 'YELLOW', 'GOLD', 'GOLD', 'RED', 'RED', 'DARK_RED'],
+    ];
+    List<InlineSpan> children = [];
+    int index = (bwLevel / 100).floor();
+
+    if (index < 10) {
+      children = [
+        TextSpan(
+          text: '[$bwLevel✫]',
+          style: TextStyle(
+            color: Color(
+              mcColorCodes[colors[prestigeColors[index]]],
+            ),
+          ),
+        ),
+      ];
+    } else if (index > 10 && index < 20) {
+      children = [
+        TextSpan(
+          text: '[',
+          style: TextStyle(
+            color: Color(0xFFAAAAAA),
+          ),
+        ),
+        TextSpan(
+          text: '$bwLevel',
+          style: TextStyle(
+            color: Color(
+              mcColorCodes[colors[prestigeColors[index][0]]],
+            ),
+          ),
+        ),
+        TextSpan(
+          text: '✪',
+          style: TextStyle(
+            color: Color(
+              mcColorCodes[colors[prestigeColors[index][1]]],
+            ),
+          ),
+        ),
+        TextSpan(
+          text: ']',
+          style: TextStyle(
+            color: Color(0xFFAAAAAA),
+          ),
+        ),
+      ];
+    } else {
+      String bwLevelStr = '[${bwLevel.toString()}${bwLevel < 1100 ? '✫' : '⚝'}]';
+      for (int i = 0; i < bwLevelStr.length; i++) {
+        children.add(
+          TextSpan(
+            text: bwLevelStr[i],
+            style: TextStyle(
+              color: Color(mcColorCodes[colors[prestigeColors[index][i]]]),
+            ),
+          ),
+        );
+      }
+    }
+
+    return RichText(
+      text: TextSpan(
+        children: children,
+        style: TextStyle(
+          fontSize: 32.0,
+          fontFamily: 'Minecraftia',
         ),
       ),
     );

@@ -34,6 +34,12 @@ class _HomeState extends State<Home> {
                     width: 90.0,
                     image: NetworkImage('https://visage.surgeplay.com/face/${player.uuid}'),
                   ),
+                  Expanded(
+                    child: SizedBox(),
+                    flex: 1,
+                  ),
+                  player.getBedwarsLevlWidget(),
+                  SizedBox(width: 20.0),
                 ],
               ),
             ],
