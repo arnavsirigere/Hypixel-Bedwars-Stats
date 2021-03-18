@@ -213,8 +213,8 @@ class Player {
         text: TextSpan(
           children: children,
           style: TextStyle(
-            fontSize: 24.0,
-            fontFamily: 'Minecraftia',
+            fontSize: 32.0,
+            fontFamily: 'Minecraft',
             shadows: [
               Shadow(
                 offset: Offset(1.0, 1.0),
@@ -325,7 +325,7 @@ class Player {
         children: children,
         style: TextStyle(
           fontSize: 32.0,
-          fontFamily: 'Minecraftia',
+          fontFamily: 'Minecraft',
         ),
       ),
     );

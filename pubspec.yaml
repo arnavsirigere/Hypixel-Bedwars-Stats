@@ -61,8 +61,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Minecraftia
+    - family: Minecraft
       fonts:
-        - asset: fonts/Minecraftia-Regular.ttf
+        - asset: fonts/minecraft.otf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
