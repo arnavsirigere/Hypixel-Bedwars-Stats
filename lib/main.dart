@@ -78,6 +78,7 @@ class _HomeState extends State<Home> {
                       'Fetching Data . . .',
                       style: TextStyle(
                         fontSize: 32.0,
+                        fontFamily: 'Minecraft',
                         color: Colors.white,
                       ),
                     ),
