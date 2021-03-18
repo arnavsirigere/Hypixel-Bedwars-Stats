@@ -96,7 +96,8 @@ class _HomeState extends State<Home> {
                 'Hypixel Bedwars Stats',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 26.0,
+                  fontSize: 28.0,
+                  fontFamily: 'Minecraft',
                 ),
               ),
             ),
