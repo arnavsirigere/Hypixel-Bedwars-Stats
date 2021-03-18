@@ -123,7 +123,7 @@ class Player {
           TextSpan(
             text: 'YOUTUBE',
             style: TextStyle(
-              color: Color(0xFFAAAAAA),
+              color: Color(0xFFFFFFFF),
             ),
           ),
           TextSpan(
