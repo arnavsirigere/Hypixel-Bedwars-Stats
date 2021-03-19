@@ -192,7 +192,7 @@ class Player {
     );
   }
 
-  Widget getBedwarsLevlWidget() {
+  Widget getBedwarsLevelWidget() {
     List<InlineSpan> children = [];
     int index = (bwLevel / 100).floor();
 

@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                     child: SizedBox(),
                     flex: 1,
                   ),
-                  player.getBedwarsLevlWidget(),
+                  player.getBedwarsLevelWidget(),
                   SizedBox(width: 20.0),
                 ],
               ),
