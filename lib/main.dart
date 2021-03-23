@@ -47,22 +47,33 @@ class _HomeState extends State<Home> {
             ],
           );
         } else if (snapshot.hasError) {
-          column = Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    //TODO: Add try again button
-                    'X Oh no! There was an error!',
-                    style: TextStyle(
-                      fontSize: 27.0,
-                      color: Colors.red[800],
-                    ),
+          column = Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'There was an error! The ign you entered may not exist, or the player may have their api setting disabled!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.red[400],
+                  fontFamily: 'Minecraft',
+                ),
+              ),
+              SizedBox(height: 15.0),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                style: ElevatedButton.styleFrom(primary: Colors.green),
+                child: Text(
+                  'Try Again',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontFamily: 'Minecraft',
                   ),
                 ),
-              ],
-            ),
+              )
+            ],
           );
         } else {
           column = Column(
