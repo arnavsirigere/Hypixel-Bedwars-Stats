@@ -42,6 +42,8 @@ class _HomeState extends State<Home> {
                   SizedBox(width: 20.0),
                 ],
               ),
+              SizedBox(height: 40.0),
+              player.getStatsWidget(),
             ],
           );
         } else if (snapshot.hasError) {

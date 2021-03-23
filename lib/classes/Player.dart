@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:hypixel_bedwars_stats/config.dart';
 import 'package:hypixel_bedwars_stats/constants.dart';
+import 'package:hypixel_bedwars_stats/widgets/stat.dart';
 import 'dart:convert';
 
 class Player {
   String ign, uuid, prefix, rank, monthlyPackageRank, monthlyRankColor, newPackageRank, rankPlusColor;
-  int bwLevel;
+  int bwLevel, winstreak, kills, deaths, fKills, fDeaths, bedsBroken, bedsLost, wins, losses;
 
   Player(this.ign);
 
@@ -15,8 +16,7 @@ class Player {
     Response uuidResponse = await get(Uri.https('api.mojang.com', '/users/profiles/minecraft/$ign'));
     Map uuidData = jsonDecode(uuidResponse.body);
     uuid = uuidData['id'];
-
-    // Hypixel Player Info and Bedwars Stats
+    // Hypixel Rank
     Response playerResponse = await get(Uri.https('api.hypixel.net', '/player', {'uuid': uuid, 'key': HYPIXEL_API_KEY}));
     Map playerData = jsonDecode(playerResponse.body)['player'];
     prefix = playerData['prefix'];
@@ -25,7 +25,18 @@ class Player {
     monthlyRankColor = playerData['monthyRankColor'];
     newPackageRank = playerData['newPackageRank'];
     rankPlusColor = playerData['rankPlusColor'];
+    // Bedwars Stats
+    Map bwStats = playerData['stats']['Bedwars'];
     bwLevel = playerData['achievements']['bedwars_level'];
+    winstreak = bwStats['winstreak'];
+    kills = bwStats['kills_bedwars'];
+    deaths = bwStats['deaths_bedwars'];
+    fKills = bwStats['final_kills_bedwars'];
+    fDeaths = bwStats['final_deaths_bedwars'];
+    bedsBroken = bwStats['beds_broken_bedwars'];
+    bedsLost = bwStats['beds_lost_bedwars'];
+    wins = bwStats['wins_bedwars'];
+    losses = bwStats['losses_bedwars'];
     // Using correct casing of ign
     for (String knownAlias in playerData['knownAliases']) {
       if (knownAlias.toLowerCase() == ign.toLowerCase()) {
@@ -260,6 +271,31 @@ class Player {
           fontFamily: 'Minecraft',
         ),
       ),
+    );
+  }
+
+  Widget getStatsWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Stat('Winstreak', '$winstreak'),
+        Divider(color: Colors.grey[600]),
+        Stat('Kills', '$kills'),
+        Stat('Deaths', '$deaths'),
+        Stat('K/D Ratio', '${(kills / deaths).toStringAsFixed(2)}'),
+        Divider(color: Colors.grey[600]),
+        Stat('Final Kills', '$fKills'),
+        Stat('Final Deaths', '$fDeaths'),
+        Stat('Final K/D Ratio', '${(fKills / fDeaths).toStringAsFixed(2)}'),
+        Divider(color: Colors.grey[600]),
+        Stat('Beds Broken', '$bedsBroken'),
+        Stat('Beds Lost', '$bedsLost'),
+        Stat('Beds Broken/Lost Ratio', '${(bedsBroken / bedsLost).toStringAsFixed(2)}'),
+        Divider(color: Colors.grey[600]),
+        Stat('Wins', '$wins'),
+        Stat('Losses', '$losses'),
+        Stat('W/L Ratio', '${(wins / losses).toStringAsFixed(2)}'),
+      ],
     );
   }
 }
