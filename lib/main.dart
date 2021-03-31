@@ -44,6 +44,58 @@ class _HomeState extends State<Home> {
               ),
               SizedBox(height: 40.0),
               player.getStatsWidget(),
+              Expanded(child: SizedBox()),
+              Row(
+                children: [
+                  Icon(Icons.search, color: Colors.white, size: 28.0),
+                  SizedBox(width: 15.0),
+                  Expanded(
+                    child: TextFormField(
+                      controller: TextEditingController(),
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Search',
+                        labelStyle: TextStyle(color: Colors.white),
+                        isDense: true, // Added this
+                        contentPadding: EdgeInsets.all(5), // Added t
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white, width: 1.0),
+                        ),
+                      ),
+                      onFieldSubmitted: (term) async {
+                        if (term == '' || term == null) return;
+                        String prevIgn = player.ign;
+                        try {
+                          player.ign = term;
+                          await player.getPlayerData();
+                        } catch (_) {
+                          player.ign = prevIgn;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Colors.red[600],
+                              duration: Duration(seconds: 5),
+                              content: Container(
+                                height: 75.0,
+                                child: Text(
+                                  'There was an error! The ign you entered may not exist, or the player may have their api setting disabled!',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black,
+                                    fontFamily: 'Minecraft',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ],
           );
         } else if (snapshot.hasError) {
@@ -102,6 +154,7 @@ class _HomeState extends State<Home> {
           );
         }
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Color(0xFF2B2B2B),
           appBar: AppBar(
             backgroundColor: Colors.yellow[600],
@@ -116,9 +169,15 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          body: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: column,
+          body: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              FocusScope.of(context).requestFocus(new FocusNode());
+            },
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: column,
+            ),
           ),
         );
       },
