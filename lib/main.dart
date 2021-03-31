@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                   SizedBox(width: 20.0),
                 ],
               ),
-              SizedBox(height: 40.0),
+              SizedBox(height: 30.0),
               player.getStatsWidget(),
               Expanded(child: SizedBox()),
               Row(
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
                                   'There was an error! The ign you entered may not exist, or the player may have their api setting disabled!',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 18.0,
+                                    fontSize: 14.0,
                                     color: Colors.black,
                                     fontFamily: 'Minecraft',
                                   ),
@@ -139,12 +139,14 @@ class _HomeState extends State<Home> {
                       size: 100.0,
                     ),
                     SizedBox(height: 20.0),
-                    Text(
-                      'Fetching Data . . .',
-                      style: TextStyle(
-                        fontSize: 32.0,
-                        fontFamily: 'Minecraft',
-                        color: Colors.white,
+                    Center(
+                      child: Text(
+                        'Fetching Data . . .',
+                        style: TextStyle(
+                          fontSize: 26.0,
+                          fontFamily: 'Minecraft',
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -163,7 +165,7 @@ class _HomeState extends State<Home> {
                 'Hypixel Bedwars Stats',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 28.0,
+                  fontSize: 22.0,
                   fontFamily: 'Minecraft',
                 ),
               ),

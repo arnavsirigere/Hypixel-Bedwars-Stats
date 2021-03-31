@@ -13,7 +13,7 @@ class Stat extends StatelessWidget {
           '$name:',
           style: TextStyle(
             color: Color(0xFFAAAAAA),
-            fontSize: 20.0,
+            fontSize: 16.0,
             fontFamily: 'Minecraft',
           ),
         ),
@@ -22,7 +22,7 @@ class Stat extends StatelessWidget {
           val,
           style: TextStyle(
             color: Colors.white,
-            fontSize: 20.0,
+            fontSize: 16.0,
             fontFamily: 'Minecraft',
           ),
         ),
