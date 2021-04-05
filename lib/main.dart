@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
       future: player.getPlayerData(),
       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
         Widget column;
-        if (snapshot.hasData) {
+        if (snapshot.hasData && player.bwLevel != null) {
           column = Column(
             children: [
               Center(
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
                               content: Container(
                                 height: 75.0,
                                 child: Text(
-                                  'There was an error! The ign you entered may not exist, or the player may have their api setting disabled!',
+                                  player.bwLevel == null ? 'No stats to display' : 'There was an error! The ign you entered may not exist, or the player may have their api setting disabled!',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 14.0,
@@ -90,7 +90,9 @@ class _HomeState extends State<Home> {
                             ),
                           );
                         }
-                        setState(() {});
+                        if (player.bwLevel != null) {
+                          setState(() {});
+                        }
                       },
                     ),
                   ),
