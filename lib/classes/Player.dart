@@ -69,11 +69,10 @@ class Player {
         );
       }
     } else if (rank != null && rank != 'NORMAL') {
-      // TODO: GAME_MASTER rank
-      if (rank == 'MODERATOR') {
+      if (rank == 'MODERATOR' || rank == 'GAME_MASTER') {
         children = [
           TextSpan(
-            text: '[MOD] $ign',
+            text: '[${rank == 'MODEARATOR' ? 'MOD' : 'GM'}] $ign',
             style: TextStyle(
               color: Color(0xFF00AA00),
             ),
