@@ -28,15 +28,15 @@ class Player {
     // Bedwars Stats
     Map bwStats = playerData['stats']['Bedwars'];
     bwLevel = playerData['achievements']['bedwars_level'];
-    winstreak = bwStats['winstreak'];
-    kills = bwStats['kills_bedwars'];
-    deaths = bwStats['deaths_bedwars'];
-    fKills = bwStats['final_kills_bedwars'];
-    fDeaths = bwStats['final_deaths_bedwars'];
-    bedsBroken = bwStats['beds_broken_bedwars'];
-    bedsLost = bwStats['beds_lost_bedwars'];
-    wins = bwStats['wins_bedwars'];
-    losses = bwStats['losses_bedwars'];
+    winstreak = bwStats['winstreak'] ?? 0;
+    kills = bwStats['kills_bedwars'] ?? 0;
+    deaths = bwStats['deaths_bedwars'] ?? 0;
+    fKills = bwStats['final_kills_bedwars'] ?? 0;
+    fDeaths = bwStats['final_deaths_bedwars'] ?? 0;
+    bedsBroken = bwStats['beds_broken_bedwars'] ?? 0;
+    bedsLost = bwStats['beds_lost_bedwars'] ?? 0;
+    wins = bwStats['wins_bedwars'] ?? 0;
+    losses = bwStats['losses_bedwars'] ?? 0;
     // Using correct casing of ign
     for (String knownAlias in playerData['knownAliases']) {
       if (knownAlias.toLowerCase() == ign.toLowerCase()) {
@@ -281,19 +281,19 @@ class Player {
         Divider(color: Colors.grey[600]),
         Stat('Kills', '$kills'),
         Stat('Deaths', '$deaths'),
-        Stat('K/D Ratio', '${(kills / deaths).toStringAsFixed(2)}'),
+        Stat('K/D Ratio', '${kills == 0 ? 0 : (kills / deaths).toStringAsFixed(2)}'),
         Divider(color: Colors.grey[600]),
         Stat('Final Kills', '$fKills'),
         Stat('Final Deaths', '$fDeaths'),
-        Stat('Final K/D Ratio', '${(fKills / fDeaths).toStringAsFixed(2)}'),
+        Stat('Final K/D Ratio', '${fKills == 0 ? 0 : (fKills / fDeaths).toStringAsFixed(2)}'),
         Divider(color: Colors.grey[600]),
         Stat('Beds Broken', '$bedsBroken'),
         Stat('Beds Lost', '$bedsLost'),
-        Stat('Beds Broken/Lost Ratio', '${(bedsBroken / bedsLost).toStringAsFixed(2)}'),
+        Stat('Beds Broken/Lost Ratio', '${bedsBroken == 0 ? 0 : (bedsBroken / bedsLost).toStringAsFixed(2)}'),
         Divider(color: Colors.grey[600]),
         Stat('Wins', '$wins'),
         Stat('Losses', '$losses'),
-        Stat('W/L Ratio', '${(wins / losses).toStringAsFixed(2)}'),
+        Stat('W/L Ratio', '${wins == 0 ? 0 : (wins / losses).toStringAsFixed(2)}'),
       ],
     );
   }
